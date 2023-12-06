@@ -1,0 +1,420 @@
+{
+  "_current_lang_code": "sa",
+  "_current_lang_name": "Arab",
+  "app": {
+    "projects": {
+      "feature": {
+        "add": {
+          "button": {
+            "step1": "Datos de la Obra",
+            "step2": "Verifica antes de Guardar",
+            "step3": "Confirmación exitosa"
+          },
+          "step3": {
+            "alert": {
+              "confirmationAddedBody": "Los datos han sido insertados correctamente.",
+              "confirmationAddedErrorBody": "Ha ocurrido un error intentando insertar los datos.",
+              "confirmationEditedBody": "Los datos han sido actualizados correctamente.",
+              "confirmationEditedErrorBody": "Ha ocurrido un error intentando actualizar los datos.",
+              "confirmationErrorTitle": "ERROR!!!",
+              "confirmationTitle": "Confirmación"
+            },
+            "body": {
+              "confirmation": "DATOS INSERTADOS CORRECTAMENTE"
+            }
+          },
+          "steps": {
+            "end": {
+              "confirmationAddedBody": "¿Desea guardar los datos insertados?",
+              "confirmationEditedBody": "¿Desea actualizar los datos modificados?",
+              "confirmationTitle": "Confirmación"
+            },
+            "exit": {
+              "confirmationBody": "¿Desea salir e ir a la lista de datos?",
+              "confirmationTitle": "Confirmación"
+            },
+            "next": {
+              "confirmationAddedBody": "Existen errores que debe resolver antes de continuar.",
+              "confirmationEditedBody": "Existen errores que debe resolver antes de continuar.",
+              "confirmationTitle": "ERROR!!!"
+            }
+          },
+          "tab_budget": {
+            "header": "Presupuesto"
+          },
+          "tab_details": {
+            "header": "Detalle Obra"
+          },
+          "tab_general": {
+            "header": "Datos Generales"
+          },
+          "tab_spaces": {
+            "button": {
+              "add": "Añadir"
+            },
+            "header": "Estancias",
+            "subitem": {
+              "nav": "Estancia"
+            }
+          }
+        },
+        "list": {
+          "button": {
+            "add": "Añadir Obra"
+          },
+          "delete": {
+            "confirmationBody": "¿Desea eliminar este elemento?",
+            "confirmationTitle": "Confirmación"
+          },
+          "deleted": {
+            "confirmationEditedBody": "Elemento eliminado.",
+            "confirmationTitle": "Confirmación"
+          },
+          "edit": {
+            "confirmationBody": "¿Desea editar este elemento?",
+            "confirmationTitle": "Confirmación"
+          },
+          "pdf": {
+            "confirmationBody": "Se abrirá el documento en otra ventana. ¿Prefiere descargarlo?",
+            "confirmationTitle": "Confirmación",
+            "title": "Presupuesto"
+          }
+        }
+      },
+      "ui": {
+        "form": {
+          "address": {
+            "additional": "Piso, escalera, puerta etc.",
+            "city": "Municipio",
+            "country": "País",
+            "has_elevator": "¿Tiene Ascensor?",
+            "header": "<b>DIRECCIÓN</b>",
+            "postal_code": "Código Postal",
+            "region": "Comunidad",
+            "state": "Provincia",
+            "street": "Calle o Avenida, Número"
+          },
+          "client": {
+            "cellphone": "Teléfono",
+            "company": "Empresa",
+            "email": "Correo electrónico",
+            "first_name": "Nombre",
+            "header": "<b>DATOS DEL CLIENTE</b>",
+            "last_name": "Apellidos",
+            "nif": "CIF / NIF / NIE"
+          },
+          "description": "Descripción",
+          "reference": "Referencia",
+          "spaces": {
+            "delete": {
+              "button": "",
+              "confirmationBody": "¿Desea eliminar la estancia?",
+              "confirmationTitle": "Confirmación"
+            },
+            "doors": {
+              "door_change": "Cambiar Puerta?",
+              "door_labour_id": "Mano de Obra Puerta",
+              "door_labour_price": "Precio Mano de Obra (€)",
+              "door_new_id": "Puerta Nueva",
+              "door_new_price": "Precio Puerta (€)",
+              "header": "<b>PUERTAS</b>",
+              "height": "Alto (mm)",
+              "left_width": "Dist. Izquierda (mm)",
+              "opening_direction": "Apertura",
+              "opening_in_left": "Int. Izquierda",
+              "opening_in_right": "Int. Derecha",
+              "opening_none": "",
+              "opening_out_left": "Ext. Izquierda",
+              "opening_out_right": "Ext. Derecha",
+              "right_width": "Dist. Derecha (mm)",
+              "wall": "Pared",
+              "wall_depth": "Profundidad (mm)",
+              "width": "Ancho (mm)"
+            },
+            "mechanisms": {
+              "header": "<b>MECANISMOS</b>",
+              "mechanism_new_category_id": "Categoría",
+              "mechanism_new_id": "Mecanismo",
+              "mechanism_new_installation_price": "Precio Instalación (€)",
+              "mechanism_new_price": "Precio Mecanismo (€)"
+            },
+            "modules": {
+              "distance_to_reference_point": "Dist. Pto Ref. (mm)",
+              "frame_new_id": "Marco",
+              "frame_new_labour_price": "Precio Instalación (€)",
+              "frame_new_price": "Precio Marco (€)",
+              "has_modules": "¿Realizar Instalación de Mecanismos?",
+              "header": "<b>MÓDULOS</b>",
+              "keep_existing_installation": "Mantener Instalación?",
+              "new_installation": "Nueva Instalación?",
+              "reference_point": "Pto de Referencia",
+              "top_height": "Alt. de la Regata (mm)",
+              "trenches_count": "Cantidad Regatas",
+              "trenches_direction": "Desviación",
+              "trenches_direction_left": "Izquierda",
+              "trenches_direction_none": "",
+              "trenches_direction_right": "Derecha",
+              "under_height": "Dist. al Suelo (mm)",
+              "wall": "Pared"
+            },
+            "photo_gallery": {
+              "photos": "Imágenes:"
+            },
+            "space_type": "Tipo de Estancia",
+            "walls": {
+              "angle": "Ángulo (grados)",
+              "header": "<b>PAREDES</b>",
+              "height": "Alto (mm)",
+              "identifier": "Identificador",
+              "width": "Ancho (mm)"
+            },
+            "windows": {
+              "blind_change": "Cambiar Persiana?",
+              "blind_labour_id": "Mano de Obra Persiana",
+              "blind_labour_price": "Precio Mano de Obra (€)",
+              "blind_new_id": "Persiana Nueva",
+              "blind_new_price": "Precio Persiana (€)",
+              "has_blind": "Tiene Persiana?",
+              "has_motorized_blind": "Persiana Motorizada?",
+              "header": "<b>VENTANAS</b>",
+              "height": "Alto (mm)",
+              "left_width": "Dist. Izquierda (mm)",
+              "right_width": "Dist. Derecha (mm)",
+              "under_height": "Dist. Inferior (mm)",
+              "wall": "Pared",
+              "wall_depth": "Profundidad (mm)",
+              "width": "Ancho (mm)",
+              "window_change": "Cambiar Ventana?",
+              "window_has_window": "Tiene Ventanas?",
+              "window_labour_id": "Mano de Obra Ventana",
+              "window_labour_price": "Precio Mano de Obra (€)",
+              "window_new_id": "Ventana Nueva",
+              "window_new_price": "Precio Ventana (€)"
+            }
+          },
+          "title": "Adicionar Obra"
+        },
+        "table": {
+          "address": "Dirección",
+          "btn": {
+            "delete": "Eliminar Obra",
+            "detail": "Mostrar Detalles de la Obra",
+            "download": "Generar Presupuesto",
+            "edit": "Editar Obra"
+          },
+          "client": "Cliente",
+          "description": "Descripción",
+          "nif": "NIF",
+          "nodata": "De momento no hay obras registradas en la base de datos.",
+          "title": {
+            "actions": "Acciones",
+            "address": "Dirección",
+            "budget": "Presupuesto",
+            "created_at": "Creado",
+            "created_by": "Usuario",
+            "doors": "Puertas",
+            "modules": "Módulos",
+            "rating": "Valoración",
+            "reference": "Referencia",
+            "space": "Estancia",
+            "space_count": "Estancias",
+            "space_type": "Tipo de Estancia",
+            "spaces": "Estancias",
+            "updated_at": "",
+            "wall": "Pared",
+            "wall_height": "Alto (mm)",
+            "walls": "Paredes",
+            "width": "Ancho (mm)",
+            "windows": "Ventanas"
+          }
+        }
+      }
+    },
+    "ui": {
+      "dynamic-forms": {
+        "_mechanisms": {
+          "arrays": {
+            "actions_btn_add_lbl": " Mecanismo",
+            "actions_btn_add_title": "Adicionar Mecanismo",
+            "actions_btn_insert_lbl": " Mecanismo",
+            "actions_btn_insert_title": "Insertar Mecanismo",
+            "actions_btn_remove_lbl": "",
+            "actions_btn_remove_title": "Eliminar Mecanismo"
+          }
+        },
+        "doors": {
+          "arrays": {
+            "actions_btn_add_lbl": " Puerta",
+            "actions_btn_add_title": "Adicionar Puerta",
+            "actions_btn_insert_lbl": " Puerta",
+            "actions_btn_insert_title": "Insertar Puerta",
+            "actions_btn_remove_lbl": "",
+            "actions_btn_remove_title": "Eliminar Puerta"
+          }
+        },
+        "modules": {
+          "arrays": {
+            "actions_btn_add_lbl": " Módulo",
+            "actions_btn_add_title": "Adicionar Módulo",
+            "actions_btn_insert_lbl": " Módulo",
+            "actions_btn_insert_title": "Insertar Módulo",
+            "actions_btn_remove_lbl": "",
+            "actions_btn_remove_title": "Eliminar Módulo"
+          }
+        },
+        "walls": {
+          "arrays": {
+            "actions_btn_add_lbl": " Pared",
+            "actions_btn_add_title": "Adicionar Pared",
+            "actions_btn_insert_lbl": " Pared",
+            "actions_btn_insert_title": "Insertar Pared",
+            "actions_btn_remove_lbl": "",
+            "actions_btn_remove_title": "Eliminar Pared"
+          }
+        },
+        "windows": {
+          "arrays": {
+            "actions_btn_add_lbl": " Ventana",
+            "actions_btn_add_title": "Adicionar Ventana",
+            "actions_btn_insert_lbl": " Ventana",
+            "actions_btn_insert_title": "Insertar Ventana",
+            "actions_btn_remove_lbl": "",
+            "actions_btn_remove_title": "Eliminar Ventana"
+          }
+        }
+      }
+    }
+  },
+  "base": {
+    "actions": {
+      "button": {
+        "back": "Atrás",
+        "back_edit": "Editar",
+        "begin": "Iniciar",
+        "confirm": "Validar",
+        "confirm_errors": "Mostrar Errores",
+        "next": "Siguiente",
+        "save": "Guardar",
+        "test": "",
+        "toList": "Listado Obras"
+      }
+    },
+    "layout": {
+      "block": {
+        "menu": {
+          "flow": {
+            "back": {
+              "confirmationBody": "¿Desea regresar al paso previo?",
+              "confirmationTitle": "Confirmación"
+            },
+            "close": {
+              "confirmationBody": "¿Desea salir de la página actual?",
+              "confirmationTitle": "Confirmación"
+            },
+            "exit": {
+              "confirmationBody": "¿Desea cerrar la aplicación?",
+              "confirmationTitle": "Confirmación"
+            },
+            "home": {
+              "confirmationBody": "¿Desea ir a la página principal?",
+              "confirmationTitle": "Confirmación"
+            },
+            "logout": {
+              "confirmationBody": "¿Desea cerrar la sesión actual?",
+              "confirmationTitle": "Confirmación"
+            }
+          },
+          "quick-links": {
+            "dashboard": "Dashboard",
+            "home": "Inicio",
+            "settings": "Configuraciones"
+          },
+          "user": {
+            "login": "Acceder",
+            "logout": "Salir",
+            "notifications": "Alertas",
+            "profile": "Perfil",
+            "settings": "Administración",
+            "system": "Sistema"
+          }
+        }
+      }
+    },
+    "login": {
+      "form": {
+        "button": {
+          "forgotPassword": "¿Olvidó la contraseña?",
+          "login": "Acceder"
+        },
+        "header": {
+          "subtitle": "Identifíquese para acceder",
+          "title": "Acceso"
+        },
+        "password": "Contraseña",
+        "rememberme": "Recuérdame",
+        "selectProvider": "Selecciona el método de acceso",
+        "username": "Usuario"
+      },
+      "provider": {
+        "LARAVEL9": {
+          "title": "Laravel"
+        },
+        "MOCKED_USER_DATA": {
+          "title": "Mocked"
+        },
+        "OAUTH2_KEYCLOAK": {
+          "title": "Keycloak"
+        },
+        "OAUTH2_SOCIAL_FACEBOOK": {
+          "title": "Facebook"
+        },
+        "OAUTH2_SOCIAL_GOOGLE": {
+          "title": "Google"
+        },
+        "SUITECRM7": {
+          "title": "SuiteCRM"
+        }
+      }
+    }
+  },
+  "ui": {
+    "datatable": {
+      "attributes": {
+        "#": "<b>#</b>"
+      },
+      "footer": {
+        "currentOfTotal": "{{current}} of {{total}}",
+        "itemsSelected": "selected: {{selected}}",
+        "showSize": "Show:"
+      }
+    },
+    "dynamic-forms": {
+      "arrays": {
+        "actions_btn_add_lbl": "Add",
+        "actions_btn_add_title": "",
+        "actions_btn_insert_lbl": "Insert",
+        "actions_btn_insert_title": "",
+        "actions_btn_remove_lbl": "Remove"
+      }
+    },
+    "errors": {
+      "mask": "{{ label }} malformed.",
+      "maxlength": "Max length required is {{ requiredLength }}.",
+      "minlength": "Min length required is {{ requiredLength }}.",
+      "required": "{{ label }} is required."
+    },
+    "modal": {
+      "alert": {
+        "button": {
+          "close": "Close"
+        }
+      },
+      "confirm": {
+        "button": {
+          "no": "No",
+          "yes": "Yes"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,14 @@
+@media (max-width: 575.98px) {
+  .w-xs-100 {
+    width: calc(100% - 8px);
+    margin-bottom: 10px;
+  }
+}
+
+.pdf-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  min-height: 600px;
+}

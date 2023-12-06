@@ -1,0 +1,42 @@
+<!--<c-footer>-->
+
+<div class="default-footer-wrapper w-100 d-flex justify-content-end">
+  <div class="mt-2 ms-3 d-inline-flex">v{{ version }}</div>
+
+  <div class="mt-2 ms-auto d-none d-sm-inline-flex">
+    <span>Techpromux</span>
+    <span>&copy;2023</span>
+  </div>
+
+  <div class="mt-0 me-2 ms-auto d-inline-flex">
+    <techpromux-menu-flow-status></techpromux-menu-flow-status>
+  </div>
+
+  <div class="me-2 d-inline-flex" *ngIf="isVisibleDevBtn()">
+    <button
+      cButton
+      color="danger"
+      class="mt-1 mb-1 pt-0 pb-0"
+      size="sm"
+      [disabled]="isDisabledDevBtn()"
+      (click)="onClickDevBtn($event)"
+    >
+      <svg cIcon name="cil-settings" size="sm"></svg>
+      {{ 'base.actions.button.test' | translate }}
+    </button>
+  </div>
+
+  <!--
+  <div class="me-2 ms-1 d-inline-flex">
+    <button
+      toggle="visible"
+      cHeaderToggler
+      [cSidebarToggle]="sidebarId"
+      (click)="onSideBarToggle($event)"
+    >
+      <svg cIcon name="cilMenu" size="lg"></svg>
+    </button>
+  </div>
+  -->
+</div>
+<!--</c-footer>-->

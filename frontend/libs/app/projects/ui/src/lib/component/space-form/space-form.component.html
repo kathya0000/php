@@ -1,0 +1,155 @@
+<techpromux-ui-dynamic-forms-default
+  #dynamicFormsComponent
+  [formModel]="formModel"
+  [formLayout]="formLayout"
+  [keepFormValuesOnChanges]="true"
+  [markAllAsReadOnly]="!editable"
+  [defaultFormArrayEndTplLayout]="defaultFormArrayEndTplLayout"
+  [useCustomArrayBtnTranslationsPrefix]="true"
+  [customModelControlsTpl]="[
+    {
+      modelId: 'space_type_id',
+      template: newLineRemoveHrTpl,
+      align: 'END'
+    },
+    {
+      modelId: '$$__hr',
+      template: separator1HrTpl,
+      align: 'END'
+    },
+    {
+      modelId: 'walls',
+      template: separator2HrTpl,
+      align: 'START'
+    },
+    {
+      modelId: 'doors',
+      template: separator2HrTpl,
+      align: 'START'
+    },
+    {
+      modelId: 'doors',
+      template: photoGalleryTpl,
+      align: 'PRE_END'
+    },
+    {
+      modelId: 'windows',
+      template: separator2HrTpl,
+      align: 'START'
+    },
+    {
+      modelId: 'windows',
+      template: photoGalleryTpl,
+      align: 'PRE_END'
+    },
+    {
+      modelId: 'modules',
+      template: separator2HrTpl,
+      align: 'START'
+    },
+    {
+      modelId: 'modules',
+      template: moduleItemFormTpl,
+      align: 'PRE_END'
+    }
+  ]"
+  (formGroupCreated)="onFormGroupCreated($event)"
+  (formModelUpdated)="onFormModelUpdated($event)"
+>
+</techpromux-ui-dynamic-forms-default>
+
+<!--  ---------------------------------------------------------------------------- -->
+
+<ng-template #separator1HrTpl>
+  <hr class="" style="width: 100%; border: 2px solid #0f0f0f; opacity: 0.3" />
+</ng-template>
+
+<ng-template #separator2HrTpl>
+  <hr
+    class="mt-3 mb-2 m-auto"
+    style="width: calc(100% - 20px); border: 1px solid #0f0f0f"
+  />
+</ng-template>
+
+<ng-template #newLine1HrTpl>
+  <div class="col-xs-12 mb-2 m-auto"></div>
+</ng-template>
+
+<!--  ---------------------------------------------------------------------------- -->
+
+<ng-template #newLineRemoveHrTpl>
+  <div class="col-xs-12" style="height: 0px" *ngIf="editable">
+    <button
+      type="button"
+      cButton
+      color="danger"
+      variant="outline"
+      class="d-none d-sm-block"
+      style="position: relative; top: -38px; left: calc(100% + 20px)"
+      (click)="onDeleteSpaceItem($event)"
+    >
+      <svg cIcon name="cil-trash" width="16" size="sm"></svg>
+      {{ 'app.projects.ui.form.spaces.delete.button' | translate }}
+    </button>
+  </div>
+  <div
+    class="col-xs-12 d-sm-none mt-2 d-flex justify-content-end text-right"
+    *ngIf="editable"
+  >
+    <button
+      cButton
+      color="danger"
+      variant="outline"
+      type="button"
+      class=""
+      (click)="onDeleteSpaceItem($event)"
+    >
+      <svg cIcon name="cil-trash" width="16" size="sm"></svg>
+      {{ 'app.projects.ui.form.spaces.delete.button' | translate }}
+    </button>
+  </div>
+</ng-template>
+
+<!--  ---------------------------------------------------------------------------- -->
+
+<ng-template
+  #photoGalleryTpl
+  let-group="group"
+  let-index="index"
+  let-context="context"
+>
+  <div
+    class="col-xl-9 col-lg-9 col-md-8 col-sm-8 col-xs-12"
+    *ngIf="isItemsChangeChecked(group, context)"
+  >
+    <techpromux-ui-photos-gallery
+      [editable]="editable"
+      [imageStoreBasePath]="imageStoreBasePath"
+      [id]="getPhotosGalleryIdByGroup(group, context)"
+      [group]="group"
+      [context]="context"
+      [header]="'app.projects.ui.form.spaces.photo_gallery.photos' | translate"
+    >
+    </techpromux-ui-photos-gallery>
+  </div>
+</ng-template>
+
+<!--  ---------------------------------------------------------------------------- -->
+
+<ng-template
+  #moduleItemFormTpl
+  let-group="group"
+  let-index="index"
+  let-context="context"
+>
+  <app-projects-ui-module-item-form
+    [editable]="editable"
+    [optionsLists]="optionsLists"
+    [context]="context"
+    [group]="group"
+    [index]="index"
+    (formGroupCreated)="onModuleFormGroupCreated($event, index)"
+  ></app-projects-ui-module-item-form>
+</ng-template>
+
+<!--  ---------------------------------------------------------------------------- -->

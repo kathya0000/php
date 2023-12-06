@@ -1,0 +1,30 @@
+<techpromux-ui-dynamic-forms-default
+  #dynamicFormsComponent
+  [formModel]="formModel"
+  [defaultFormArrayEndTplLayout]="defaultFormArrayEndTplLayout"
+  [customModelControlsTpl]="[
+    {
+      modelId: '$$__hr',
+      template: separator1HrTpl,
+      align: 'END'
+    }
+  ]"
+  [formLayout]="formLayout"
+  [keepFormValuesOnChanges]="true"
+  [markAllAsReadOnly]="!editable"
+  (formGroupCreated)="onFormGroupCreated($event)"
+  (formModelUpdated)="onFormModelUpdated($event)"
+>
+</techpromux-ui-dynamic-forms-default>
+
+<!--  ---------------------------------------------------------------------------- -->
+
+<ng-template #newLine1HrTpl>
+  <div class="col-xs-12 mb-2 m-auto"></div>
+</ng-template>
+
+<ng-template #separator1HrTpl>
+  <hr class="" style="width: 100%; border: 2px solid #0f0f0f; opacity: 0.3" />
+</ng-template>
+
+<!--  ---------------------------------------------------------------------------- -->

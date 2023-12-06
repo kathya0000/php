@@ -1,0 +1,185 @@
+<div class="container-fluid">
+  <hr class="" style="width: 100%; border: 1px solid #0f0f0f" />
+  <p style="white-space: break-spaces">
+    <label
+      style="font-weight: 600"
+      [innerHTML]="('app.projects.ui.table.client' | translate) + ': '"
+    ></label>
+    <span
+      [innerText]="project.client.first_name + ' ' + project.client.last_name"
+    ></span>
+    |
+    <label
+      style="font-weight: 600"
+      [innerHTML]="('app.projects.ui.table.nif' | translate) + ': '"
+    ></label>
+    <span [innerText]="project.client.nif"></span>
+  </p>
+  <hr class="" style="width: 100%; border: 1px solid #0f0f0f" />
+  <p style="white-space: break-spaces">
+    <label
+      style="font-weight: 600"
+      [innerHTML]="('app.projects.ui.table.address' | translate) + ': '"
+    ></label>
+    <span
+      [innerText]="
+        project.address.street +
+        (project.address.additional && project.address.additional !== ''
+          ? ', ' + project.address.additional
+          : '') +
+        (project.address.city_code && project.address.city_code !== ''
+          ? '. ' +
+            (project.address.city_code
+              | optionItemLabel
+                : 'geo_infos_cities__' + project.address.state_code
+              | async)
+          : '') +
+        (project.address.state_code && project.address.state_code !== ''
+          ? (project.address.city_code && project.address.city_code !== ''
+              ? ', '
+              : '. ') +
+            (project.address.state_code
+              | optionItemLabel : 'geo_infos_states'
+              | async)
+          : '') +
+        (project.address.postal_code && project.address.postal_code !== ''
+          ? '. CP ' + project.address.postal_code
+          : '')
+      "
+    ></span>
+  </p>
+  <hr class="" style="width: 100%; border: 1px solid #0f0f0f" />
+  <p style="white-space: break-spaces">
+    <label
+      style="font-weight: 600"
+      [innerHTML]="('app.projects.ui.table.description' | translate) + ': '"
+    ></label>
+    <span [innerText]="project.description"></span>
+  </p>
+  <!-- SPACES DETAILS ------------------ -->
+  <hr class="" style="width: 100%; border: 1px solid #0f0f0f" />
+  <div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">
+              {{ 'app.projects.ui.table.title.space' | translate }}
+            </th>
+            <th scope="col">
+              {{ 'app.projects.ui.table.title.space_type' | translate }}
+            </th>
+            <th scope="col">
+              {{ 'app.projects.ui.table.title.walls' | translate }}
+            </th>
+            <th scope="col">
+              {{ 'app.projects.ui.table.title.doors' | translate }}
+            </th>
+            <th scope="col">
+              {{ 'app.projects.ui.table.title.windows' | translate }}
+            </th>
+            <th scope="col">
+              {{ 'app.projects.ui.table.title.modules' | translate }}
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <ng-container *ngFor="let space of project.spaces; let i = index">
+            <tr>
+              <th scope="row">
+                {{ 'app.projects.ui.table.title.space' | translate }} #
+                {{ i + 1 }}
+              </th>
+              <th>
+                {{
+                  space.space_type_id | optionItemLabel : 'spaces_types' | async
+                }}
+              </th>
+              <td>{{ space.walls.length }}</td>
+              <td>{{ space.doors.length }}</td>
+              <td>{{ space.windows.length }}</td>
+              <td>{{ space.modules.length }}</td>
+            </tr>
+          </ng-container>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-md-12 col-sm-12 col-xs-12">
+      <ng-container
+        *ngFor="
+          let space of project.spaces;
+          let i = index;
+          let first = first;
+          let last = last
+        "
+      >
+        <c-card class="mb-3" style="max-width: calc(100vw - 80px)">
+          <c-card-header>
+            <label>
+              <b>
+                {{ 'app.projects.ui.table.title.space' | translate }}
+                # {{ i + 1 }} -
+                {{
+                  space.space_type_id | optionItemLabel : 'spaces_types' | async
+                }}
+              </b>
+            </label>
+          </c-card-header>
+          <c-card-body>
+            <div class="row">
+              <div
+                class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12 ps-3 pe-3"
+                style="max-width: calc(100vw - 60px)"
+              >
+                <techpromux-ui-photos-gallery
+                  [editable]="false"
+                  [header]="''"
+                  [imageStoreBasePath]="imageStoreBasePath"
+                  [photos]="space.designs_gallery"
+                  [container_class]="''"
+                  [img_width]="'100%'"
+                  [img_height]="'100%'"
+                  [img_container_width_editable]="'100%'"
+                  [img_container_width_no_editable]="'100%'"
+                  [img_container_height_editable]="''"
+                  [img_container_height_no_editable]="''"
+                  [img_container_class]="
+                    'text-center position-relative m-auto pt-0 mt-0 mb-3 me-3'
+                  "
+                >
+                </techpromux-ui-photos-gallery>
+              </div>
+
+              <div class="col-xs-12 d-xs-block d-sm-block d-md-none"></div>
+
+              <div
+                class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12"
+                style="max-width: calc(100vw - 60px)"
+              >
+                <techpromux-ui-photos-gallery
+                  [editable]="false"
+                  [header]="''"
+                  [imageStoreBasePath]="imageStoreBasePath"
+                  [photos]="getSpaceWallsDesignsGalleries(space)"
+                  [container_class]="''"
+                  [img_width]="'100%'"
+                  [img_height]="'100%'"
+                  [img_container_width_editable]="'45%'"
+                  [img_container_width_no_editable]="'45%'"
+                  [img_container_height_editable]="''"
+                  [img_container_height_no_editable]="''"
+                  [img_container_class]="
+                    'position-relative float-start text-center m-auto pt-0 mt-0 mb-2 ms-2'
+                  "
+                >
+                </techpromux-ui-photos-gallery>
+              </div>
+            </div>
+          </c-card-body>
+        </c-card>
+      </ng-container>
+    </div>
+  </div>
+  <!-- -------------------------------------- -->
+  <hr class="" style="width: 100%; border: 1px solid #0f0f0f" />
+</div>

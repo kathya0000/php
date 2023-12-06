@@ -1,0 +1,155 @@
+<div class="bg-light min-vh-100 d-flex flex-row align-items-center">
+  <c-container>
+    <c-row class="justify-content-center">
+      <c-col md="8">
+        <c-card-group>
+          <c-card class="p-4">
+            <c-card-body>
+              <form cForm [formGroup]="form" (submit)="login()">
+                <h1>{{ 'base.login.form.header.title' | translate}}</h1>
+                <p class="text-medium-emphasis">{{ 'base.login.form.header.subtitle' | translate}}</p>
+
+                <c-input-group class="mb-3">
+                  <span cInputGroupText>
+                    <svg cIcon name="cilUser"></svg>
+                  </span>
+                  <input
+                    autoComplete="username"
+                    cFormControl
+                    placeholder="{{ 'base.login.form.username' | translate}}"
+                    formControlName="username"
+                  />
+                </c-input-group>
+
+                <c-input-group class="mb-4">
+                  <span cInputGroupText>
+                    <svg cIcon name="cilLockLocked"></svg>
+                  </span>
+                  <input
+                    autoComplete="current-password"
+                    cFormControl
+                    placeholder="{{ 'base.login.form.password' | translate}}"
+                    type="password"
+                    formControlName="password"
+                  />
+                </c-input-group>
+
+                <p class="text-medium-emphasis" *ngIf="showProvidersOptions">
+                  {{ 'base.login.form.selectProvider' | translate}}
+                </p>
+
+                <c-input-group class="mb-2" *ngIf="showProvidersOptions">
+                  <c-row>
+                    <ng-container *ngFor="let provider of providersConfig">
+                      <ng-container *ngIf="provider.enabled">
+                        <c-col class="mb-2">
+                          <ng-container
+                            [ngTemplateOutlet]="authenticationServiceTpl"
+                            [ngTemplateOutletContext]="{
+                              color: provider.color,
+                              icon: provider.icon,
+                              providerId: provider.id,
+                              title: provider.title
+                            }"
+                          >
+                          </ng-container>
+                        </c-col>
+                      </ng-container>
+                    </ng-container>
+                  </c-row>
+                </c-input-group>
+
+                <c-input-group class="mb-4">
+                  <c-form-check>
+                    <input
+                      [checked]="false"
+                      cFormCheckInput
+                      id="rememberme"
+                      placeholder="Remember me"
+                      formControlName="rememberme"
+                      type="checkbox"
+                    />
+                    <label cFormCheckLabel for="rememberme">
+                      {{ 'base.login.form.rememberme' | translate}}</label>
+                  </c-form-check>
+                </c-input-group>
+
+                <c-row>
+                  <c-col xs="6">
+                    <button cButton class="px-4" color="primary" type="submit">
+                      {{ 'base.login.form.button.login' | translate}}
+                    </button>
+                  </c-col>
+                  <c-col class="text-right" xs="6">
+                    <button type="button" cButton class="px-0" color="link">
+                      {{ 'base.login.form.button.forgotPassword' | translate}}
+                    </button>
+                  </c-col>
+                </c-row>
+              </form>
+              <br />
+            </c-card-body>
+          </c-card>
+          <!--
+          <c-card
+            [ngStyle]="{ 'width.%': 44 }"
+            class="text-white bg-primary py-5"
+          >
+            <c-card-body class="text-center">
+              <div>
+                <h2>Sign up</h2>
+                <p>
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
+                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                </p>
+                <button
+                  [active]="true"
+                  cButton
+                  class="mt-3"
+                  color="primary"
+                  routerLink="/register"
+                >
+                  Register Now!
+                </button>
+              </div>
+            </c-card-body>
+          </c-card>
+          -->
+        </c-card-group>
+      </c-col>
+    </c-row>
+  </c-container>
+</div>
+
+<ng-template
+  #authenticationServiceTpl
+  let-icon="icon"
+  let-color="color"
+  let-provider="providerId"
+  let-title="title"
+>
+  <c-form-check>
+    <input
+      [checked]="activeProviderId === provider"
+      cFormCheckInput
+      type="radio"
+      [id]="provider"
+      [title]="title | translate"
+      [disabled]="activeProviderId !== provider"
+    />
+    <label cFormCheckLabel for="{{ provider }}">
+      <button
+        type="button"
+        cButton
+        class="px-3"
+        color="{{ color }}"
+        variant="outline"
+        [title]="title | translate"
+        [active]="isActive(provider)"
+        (click)="activeAsDefault(provider)"
+      >
+        <svg cIcon class="me-1" name="{{ icon }}"></svg>
+      </button>
+    </label>
+  </c-form-check>
+</ng-template>

@@ -1,0 +1,31 @@
+<techpromux-ui-page-box>
+  <techpromux-ui-navbar-box [class]="'content-no-printable'">
+    <button cButton color="light" [active]="true" (click)="goToAdd()">
+      <svg cIcon class="me-2" name="cib-addthis"></svg>
+      {{ 'app.projects.feature.list.button.add' | translate }}
+    </button>
+  </techpromux-ui-navbar-box>
+
+  <techpromux-ui-panel-box [customClasses]="'table-responsive'">
+    <h5
+      class="mt-4 mb-4 ms-4 me-4"
+      [class.d-none]="pageDataLoaded === false || pagedData.total !== 0"
+    >
+      <svg cIcon class="me-2" name="cil-house" size="lg"></svg>
+      <label>{{ 'app.projects.ui.table.nodata' | translate }}</label>
+    </h5>
+
+    <app-projects-ui-projects-table
+      [class.d-none]="pagedData.total === 0"
+      [pagedDataSettings]="pagedData"
+      (paged)="onPage($event)"
+      (sorted)="onSort($event)"
+      (selected)="onSelect($event)"
+      (clickEdit)="onClickBtn_Edit($event)"
+      (clickDelete)="onClickBtn_Delete($event)"
+      (clickDoc)="onClickBtn_Doc($event)"
+      (init)="registerChild('books-table', $event)"
+    >
+    </app-projects-ui-projects-table>
+  </techpromux-ui-panel-box>
+</techpromux-ui-page-box>

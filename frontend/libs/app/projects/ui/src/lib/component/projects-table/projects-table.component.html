@@ -1,0 +1,91 @@
+<div>
+  <techpromux-ui-datatable-default
+    #listTable
+    [settingsHandler]="listTableSettingsHandler"
+    [dataSettings]="pagedDataSettings"
+    (paged)="onPaged($event)"
+    (sorted)="onSorted($event)"
+    (selected)="onSelected($event)"
+  >
+  </techpromux-ui-datatable-default>
+</div>
+
+<!-- ----------------------------------------------------------------------------- -->
+
+<ng-template #rowDetailsTpl let-row="row">
+  <app-projects-ui-project-detail
+    [project]="row"
+  ></app-projects-ui-project-detail>
+</ng-template>
+
+<!-- ----------------------------------------------------------------------------- -->
+
+<ng-template
+  #fieldActionsTpl
+  let-row="row"
+  let-column="column"
+  let-value="value"
+  let-expanded="expanded"
+>
+  <button
+    cButton
+    class="me-2"
+    [class.mb-2]="hasMobileSize()"
+    color="info"
+    variant="outline"
+    title=" {{ 'app.projects.ui.table.btn.edit' | translate }}"
+    (click)="onClickBtn_Edit(row)"
+  >
+    <svg cIcon name="cilPencil" size="sm"></svg>
+  </button>
+
+  <button
+    cButton
+    class="me-2"
+    [class.mb-2]="hasMobileSize()"
+    color="danger"
+    variant="outline"
+    title=" {{ 'app.projects.ui.table.btn.delete' | translate }}"
+    (click)="onClickBtn_Delete(row)"
+  >
+    <svg cIcon name="cilTrash" size="sm"></svg>
+  </button>
+
+  <button
+    *ngIf="!expanded"
+    cButton
+    class="me-2"
+    color="secondary"
+    variant="outline"
+    title=" {{ 'app.projects.ui.table.btn.detail' | translate }}"
+    (click)="listTable.toggleExpandRow(row)"
+  >
+    <svg cIcon name="cilFolder" size="sm"></svg>
+  </button>
+
+  <button
+    *ngIf="expanded"
+    cButton
+    class="me-2"
+    color="secondary"
+    variant="outline"
+    [active]="true"
+    title=" {{ 'app.projects.ui.table.btn.detail' | translate }}"
+    (click)="listTable.toggleExpandRow(row)"
+  >
+    <svg cIcon name="cilFolderOpen" size="sm"></svg>
+  </button>
+
+  <button
+    cButton
+    class="me-0"
+    color="dark"
+    variant="outline"
+    title=" {{ 'app.projects.ui.table.btn.download' | translate }}"
+    (click)="onClickBtn_Doc(row)"
+  >
+    <svg cIcon name="cilDescription" size="sm"></svg>
+  </button>
+</ng-template>
+
+<!-- ----------------------------------------------------------------------------- -->

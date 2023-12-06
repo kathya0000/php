@@ -1,0 +1,448 @@
+<techpromux-ui-page-box>
+  <!--  -->
+  <!-- HEADER & NAV BAR -->
+
+  <techpromux-ui-navbar-box
+    [class]="'content-no-printable'"
+    [customClasses]="'justify-content-between row'"
+    [autoJustify]="false"
+  >
+    <div
+      class="col-xl-5 col-lg-5 col-md-5 col-sm-5 col-xs-12 align-middle mb-2"
+    >
+      <div class="d-none d-sm-block col-xs-12 mt-1"></div>
+      <h5 class="mb-0">
+        <ng-container *ngIf="currentStep === 'step1'">
+          <svg cIcon name="cil-house" width="16" size="xl"></svg>
+          {{ 'app.projects.feature.add.button.step1' | translate }}
+        </ng-container>
+        <ng-container *ngIf="currentStep === 'step2'">
+          <svg cIcon name="cil-send" width="16" size="xl"></svg>
+          {{ 'app.projects.feature.add.button.step2' | translate }}
+        </ng-container>
+        <ng-container *ngIf="currentStep === 'step3'">
+          <svg cIcon name="cil-thumb-up" width="16" size="xl"></svg>
+          {{ 'app.projects.feature.add.button.step3' | translate }}
+        </ng-container>
+      </h5>
+    </div>
+    <div
+      class="col-xl-7 col-lg-7 col-md-7 col-sm-7 col-xs-12 d-none d-sm-block d-sm-flex justify-content-end ps-3 pe-3"
+    >
+      <ng-container
+        [ngTemplateOutlet]="actionButtonsTpl"
+        [ngTemplateOutletContext]="{}"
+      ></ng-container>
+    </div>
+  </techpromux-ui-navbar-box>
+
+  <!-- BODY CONTENT -->
+
+  <ng-container *ngIf="formIsVisible">
+    <techpromux-ui-panel-box [customClasses]="'ms-2 me-2'">
+      <div class="row">
+        <c-nav variant="tabs" [class]="'content-no-printable'">
+          <!-- GENERAL TAB ------------------------------------------------------------ -->
+          <a
+            [cTabContent]="tabContent"
+            [tabPaneIdx]="0"
+            cNavLink
+            *ngIf="isVisibleTab_GENERAL_DATA()"
+            [disabled]="isDisabledTab_GENERAL_DATA()"
+            [active]="formTabActive === 0"
+            [cTextColor]="!isProjectFormGroupValid() ? 'danger' : ''"
+            (click)="onActivateProjectTabX(0)"
+          >
+            <svg cIcon name="cil-address-book" width="16"></svg>
+            {{ 'app.projects.feature.add.tab_general.header' | translate }}
+          </a>
+          <!-- SPACES TAB ------------------------------------------------------------ -->
+          <a
+            [cTabContent]="tabContent"
+            [tabPaneIdx]="1"
+            cNavLink
+            *ngIf="isVisibleTab_SPACES()"
+            [disabled]="isDisabledTab_SPACES()"
+            [active]="formTabActive === 1"
+            [cTextColor]="!isSpacesFormArrayValid() ? 'danger' : ''"
+            (click)="onActivateProjectTabX(1)"
+          >
+            <svg cIcon name="cil-house" width="16"></svg>
+            {{ 'app.projects.feature.add.tab_spaces.header' | translate }} ({{
+              spacesFormsData.length
+            }})
+          </a>
+          <!-- DETAILS TAB ------------------------------------------------------------ -->
+          <a
+            [cTabContent]="tabContent"
+            [tabPaneIdx]="4"
+            cNavLink
+            *ngIf="isVisibleTab_DETAILS()"
+            [disabled]="isDisabledTab_DETAILS()"
+            [active]="formTabActive === 4"
+            (click)="onActivateProjectTabX(4)"
+          >
+            <svg cIcon name="cil-folder" width="16"></svg>
+            {{ 'app.projects.feature.add.tab_details.header' | translate }}
+          </a>
+          <!-- BUDGET TAB ------------------------------------------------------------ -->
+          <a
+            [cTabContent]="tabContent"
+            [tabPaneIdx]="5"
+            cNavLink
+            *ngIf="isVisibleTab_BUDGET()"
+            [disabled]="isDisabledTab_BUDGET()"
+            [active]="formTabActive === 5"
+            (click)="onActivateProjectTabX(5)"
+          >
+            <svg cIcon name="cil-description" width="16"></svg>
+            {{ 'app.projects.feature.add.tab_budget.header' | translate }}
+          </a>
+          <!-- ------------------------------------------------------------ -->
+        </c-nav>
+        <c-tab-content
+          #tabContent="cTabContent"
+          [style]="
+            hasMobileSize()
+              ? { 'min-height': 'calc(100vh - 520px)' }
+              : { 'min-height': 'calc(100vh - 420px)' }
+          "
+        >
+          <!-- GENERAL CONTENT ------------------------------------------------------------ -->
+          <c-tab-pane class="p-0 pt-3">
+            <app-projects-ui-general-form
+              *ngIf="currentStep === 'step1'"
+              [editable]="true"
+              [initialData]="projectFormData"
+              (formGroupCreated)="onProjectFormGroupCreated($event)"
+            >
+            </app-projects-ui-general-form>
+
+            <app-projects-ui-general-form
+              *ngIf="currentStep === 'step2'"
+              [editable]="false"
+              [initialData]="projectFormData"
+              (formGroupCreated)="onProjectFormGroupCreated($event)"
+            >
+            </app-projects-ui-general-form>
+          </c-tab-pane>
+          <!-- SPACES CONTENT ------------------------------------------------------------ -->
+          <c-tab-pane class="p-0 pt-3">
+            <c-nav variant="tabs">
+              <ng-container
+                *ngFor="
+                  let formS of spacesFormsData;
+                  let i = index;
+                  trackBy: spacesFormsDataTrackByFn
+                "
+              >
+                <a
+                  [cTabContent]="tabContentSpace"
+                  [tabPaneIdx]="i"
+                  cNavLink
+                  [cTextColor]="!isSpaceFormGroupValid(i) ? 'danger' : ''"
+                  [active]="spaceTabActive === i"
+                  (click)="onActivateSpaceTabX(i)"
+                >
+                  <svg cIcon name="cil-view-quilt" width="16"></svg>
+                  # {{ i + 1 }} -
+                  {{
+                    $any(formGroup.get('spaces'))?.controls[i]?.get(
+                      'space_type_id'
+                    )?.value
+                      ? ($any(formGroup.get('spaces'))?.controls[i]?.get(
+                          'space_type_id'
+                        )?.value
+                        | optionItemLabel : 'spaces_types'
+                        | async)
+                      : ('app.projects.feature.add.tab_spaces.subitem.nav'
+                        | translate)
+                  }}
+                </a>
+              </ng-container>
+
+              <a
+                cNavLink
+                (click)="onAddItemToSpaceFormArray()"
+                *ngIf="formIsEditable"
+              >
+                <svg cIcon name="cil-medical-cross" width="16"></svg>
+                {{
+                  'app.projects.feature.add.tab_spaces.button.add' | translate
+                }}
+              </a>
+            </c-nav>
+            <c-tab-content #tabContentSpace="cTabContent">
+              <ng-container
+                *ngFor="
+                  let formS of spacesFormsData;
+                  let i = index;
+                  trackBy: spacesFormsDataTrackByFn
+                "
+              >
+                <c-tab-pane class="p-0 pt-3">
+                  <app-projects-ui-space-form
+                    *ngIf="currentStep === 'step1'"
+                    [editable]="true"
+                    [initialData]="spacesFormsData[i]"
+                    (formGroupCreated)="onSpaceFormGroupCreated($event, i)"
+                    (deleteItem)="onDeleteSpaceItem($event, i)"
+                  >
+                  </app-projects-ui-space-form>
+
+                  <app-projects-ui-space-form
+                    *ngIf="currentStep === 'step2'"
+                    [editable]="false"
+                    [initialData]="spacesFormsData[i]"
+                    (formGroupCreated)="onSpaceFormGroupCreated($event, i)"
+                    (deleteItem)="onDeleteSpaceItem($event, i)"
+                  >
+                  </app-projects-ui-space-form>
+
+                  <ng-container
+                    *ngIf="
+                      currentStep === 'step2' &&
+                      spacesFormsCreated[i] === true &&
+                      formDataToSave &&
+                      formDataToSave?.$$__designs_gallery_updated === true &&
+                      formDataToSave?.spaces[i]
+                    "
+                    [ngTemplateOutlet]="spaceDesignDetailsTpl"
+                    [ngTemplateOutletContext]="{
+                      space: formDataToSave.spaces[i],
+                      i: i
+                    }"
+                  >
+                  </ng-container>
+                </c-tab-pane>
+              </ng-container>
+              <c-tab-pane class="p-0 pt-3"></c-tab-pane>
+            </c-tab-content>
+          </c-tab-pane>
+          <!-- CONTENT ------------------------------------------------------------ -->
+          <c-tab-pane class="p-0 pt-3">
+          </c-tab-pane>
+          <!-- CONTENT ------------------------------------------------------------ -->
+          <c-tab-pane class="p-0 pt-3">
+          </c-tab-pane>
+          <!-- DETAILS CONTENT ------------------------------------------------------------ -->
+          <c-tab-pane class="p-0 pt-3">
+            <ng-container *ngIf="currentStep === 'step1' && element">
+              <app-projects-ui-project-detail
+                [project]="element"
+              ></app-projects-ui-project-detail>
+            </ng-container>
+            <ng-container
+              *ngIf="
+                currentStep === 'step2' &&
+                formDataToSave &&
+                formDataToSave?.$$__designs_gallery_updated === true
+              "
+            >
+              <app-projects-ui-project-detail
+                [project]="formDataToSave"
+              ></app-projects-ui-project-detail>
+            </ng-container>
+          </c-tab-pane>
+          <!-- BUDGET CONTENT ------------------------------------------------------------ -->
+          <c-tab-pane class="p-0 pt-3">
+            <embed
+              name="budgetPdfUrl"
+              class="pdf-content"
+              title="Project Budget PDF"
+              *ngIf="budgetPdfUrl !== null"
+              [src]="budgetPdfUrl"
+            />
+          </c-tab-pane>
+          <!-- ------------------------------------------------------------ -->
+        </c-tab-content>
+      </div>
+    </techpromux-ui-panel-box>
+  </ng-container>
+
+  <ng-container *ngIf="currentStep === 'step3'">
+    <techpromux-ui-panel-box [customClasses]="'ms-2 me-2'">
+      <div class="row">
+        <div class="col-xs-12 pt-4 pb-4 ps-4 pe-4">
+          {{ 'app.projects.feature.add.step3.body.confirmation' | translate }}
+        </div>
+      </div>
+    </techpromux-ui-panel-box>
+  </ng-container>
+
+  <!-- FOOTER & NAV BAR -->
+
+  <techpromux-ui-navbar-box
+    [class]="'content-no-printable'"
+    [customClasses]="'justify-content-between row'"
+    [autoJustify]="false"
+  >
+    <div class="d-sm-flex justify-content-end ps-3 pe-3">
+      <ng-container
+        [ngTemplateOutlet]="actionButtonsTpl"
+        [ngTemplateOutletContext]="{}"
+      ></ng-container>
+    </div>
+  </techpromux-ui-navbar-box>
+
+  <!--  -->
+</techpromux-ui-page-box>
+
+<ng-template #actionButtonsTpl>
+  <!-- INIT -->
+
+  <button
+    cButton
+    *ngIf="isVisibleBtn_Start()"
+    [disabled]="isDisabledBtn_Start()"
+    (click)="onClickBtn_Start()"
+    color="secondary"
+    variant="outline"
+    class="ms-1 me-1 w-xs-100"
+    style="min-width: 100px"
+  >
+    <svg cIcon name="cib-addthis" width="16"></svg>
+    {{ 'base.actions.button.begin' | translate }}
+  </button>
+
+  <!-- OUT -->
+
+  <button
+    cButton
+    *ngIf="isVisibleBtn_Exit()"
+    [disabled]="isDisabledBtn_Exit()"
+    (click)="onClickBtn_Exit()"
+    color="secondary"
+    variant="outline"
+    class="ms-1 me-1 w-xs-100"
+    style="min-width: 100px"
+  >
+    <svg cIcon name="cil-list" width="16"></svg>
+    {{ 'base.actions.button.toList' | translate }}
+  </button>
+
+  <!-- PREVIOUS -->
+
+  <button
+    cButton
+    *ngIf="isVisibleBtn_Previous()"
+    [disabled]="isDisabledBtn_Previous()"
+    (click)="onClickBtn_Previous()"
+    color="secondary"
+    variant="outline"
+    class="ms-1 me-1 w-xs-100"
+    style="min-width: 100px"
+  >
+    <svg cIcon name="cil-arrow-thick-left" width="16"></svg>
+    {{ 'base.actions.button.back_edit' | translate }}
+  </button>
+
+  <!-- NEXT -->
+
+  <button
+    cButton
+    *ngIf="isVisibleBtn_Next()"
+    [disabled]="isDisabledBtn_Next()"
+    (click)="onClickBtn_Next()"
+    [active]="!isDisabledBtn_Next() && isFormGroupValid()"
+    [color]="isFormGroupValid() ? 'primary' : 'danger'"
+    variant="outline"
+    class="ms-1 me-1 w-xs-100"
+    style="min-width: 100px"
+  >
+    <ng-container *ngIf="isFormGroupValid()">
+      <svg cIcon name="cil-calendar-check" width="16"></svg>
+      {{ 'base.actions.button.confirm' | translate }}
+    </ng-container>
+    <ng-container *ngIf="!isFormGroupValid()">
+      <svg cIcon name="cil-bug" width="16"></svg>
+      {{ 'base.actions.button.confirm_errors' | translate }}
+    </ng-container>
+  </button>
+
+  <!-- END -->
+
+  <button
+    cButton
+    *ngIf="isVisibleBtn_End()"
+    [disabled]="isDisabledBtn_End()"
+    (click)="onClickBtn_End()"
+    [active]="!isDisabledBtn_End()"
+    color="primary"
+    variant="outline"
+    class="ms-1 me-1 w-xs-100"
+    style="min-width: 100px"
+  >
+    <svg cIcon name="cil-save" width="16"></svg>
+    {{ 'base.actions.button.save' | translate }}
+  </button>
+</ng-template>
+
+<!-- ----------------------------------------------------------------------------- -->
+
+<ng-template #spaceDesignDetailsTpl let-space="space" let-i="i">
+  <c-card class="mb-3" style="max-width: calc(100vw - 80px)">
+    <c-card-header>
+      <label>
+        <b>
+          {{ 'app.projects.ui.table.title.space' | translate }}
+          # {{ i + 1 }} -
+          {{ space.space_type_id | optionItemLabel : 'spaces_types' | async }}
+        </b>
+      </label>
+    </c-card-header>
+    <c-card-body>
+      <div class="row">
+        <div
+          class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12 ps-3 pe-3"
+          style="max-width: calc(100vw - 60px)"
+        >
+          <techpromux-ui-photos-gallery
+            [editable]="false"
+            [header]="''"
+            [imageStoreBasePath]="imageStoreBasePath"
+            [photos]="space.designs_gallery"
+            [container_class]="''"
+            [img_width]="'100%'"
+            [img_height]="'100%'"
+            [img_container_width_editable]="'100%'"
+            [img_container_width_no_editable]="'100%'"
+            [img_container_height_editable]="''"
+            [img_container_height_no_editable]="''"
+            [img_container_class]="
+              'text-center position-relative m-auto pt-0 mt-0 mb-3 me-3'
+            "
+          >
+          </techpromux-ui-photos-gallery>
+        </div>
+
+        <div class="col-xs-12 d-xs-block d-sm-block d-md-none"></div>
+
+        <div
+          class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12"
+          style="max-width: calc(100vw - 60px)"
+        >
+          <techpromux-ui-photos-gallery
+            [editable]="false"
+            [header]="''"
+            [imageStoreBasePath]="imageStoreBasePath"
+            [photos]="getSpaceWallsDesignsGalleries(space)"
+            [container_class]="''"
+            [img_width]="'100%'"
+            [img_height]="'100%'"
+            [img_container_width_editable]="'45%'"
+            [img_container_width_no_editable]="'45%'"
+            [img_container_height_editable]="''"
+            [img_container_height_no_editable]="''"
+            [img_container_class]="
+              'position-relative float-start text-center m-auto pt-0 mt-0 mb-2 ms-2'
+            "
+          >
+          </techpromux-ui-photos-gallery>
+        </div>
+      </div>
+    </c-card-body>
+  </c-card>
+</ng-template>
+
+<!-- ----------------------------------------------------------------------------- -->

@@ -1,0 +1,78 @@
+<div class="menu-user-dropdown-wrapper">
+  <c-header-nav>
+    <ng-container *ngTemplateOutlet="userDropdown"></ng-container>
+  </c-header-nav>
+</div>
+
+<ng-template #userDropdown>
+  <c-dropdown alignment="end" variant="nav-item">
+    <button cButton color="" [caret]="false" cDropdownToggle class="py-0">
+      <c-avatar
+        *ngIf="(isUserLogged$ | async) === false"
+        cTextColor="primary"
+        shape="rounded-1"
+        size="md"
+        [src]="'./assets/img/user-profile/user-no-photo.png'"
+        [status]="'danger'"
+      >
+      </c-avatar>
+      <c-avatar
+        *ngIf="(isUserLogged$ | async) === true"
+        cTextColor="primary"
+        shape="rounded-1"
+        size="md"
+        [src]="
+          (userData$ | async)?.photoUrl
+            ? '' + (userData$ | async)?.photoUrl
+            : './assets/img/user-profile/user-no-photo.png'
+        "
+        [status]="'success'"
+      >
+      </c-avatar>
+    </button>
+    <ul cDropdownMenu class="pt-0 pr-5 w-auto">
+      <li *ngIf="(isUserLogged$ | async) === true">
+        <ng-container *ngFor="let item of userNavItems">
+          <ng-container *ngIf="item.title">
+            <h6 cDropdownHeader class="bg-light fw-semibold py-2">
+              <svg cIcon class="me-2" [name]="item.iconComponent.name"></svg>
+              {{ item.name ? (item.name | translate) : '' }}
+            </h6>
+          </ng-container>
+          <ng-container *ngIf="item.href">
+            <a
+              [href]="item.href"
+              cDropdownItem
+              [target]="
+                item['attributes'] && item['attributes']['target']
+                  ? item['attributes']['target']
+                  : ''
+              "
+            >
+              <svg cIcon class="me-2" [name]="item.iconComponent.name"></svg>
+              {{ item.name ? (item.name | translate) : '' }}
+            </a>
+          </ng-container>
+          <ng-container *ngIf="item.url">
+            <a
+              [routerLink]="item.url"
+              href="javascript:void(0)"
+              [disabled]="
+                item.attributes &&
+                item.attributes['disabledForLogged'] &&
+                (isUserLogged$ | async) === true
+              "
+              cDropdownItem
+            >
+              <svg cIcon class="me-2" [name]="item.iconComponent.name"></svg>
+              {{ item.name ? (item.name | translate) : '' }}
+            </a>
+          </ng-container>
+          <ng-container *ngIf="item.divider">
+            <hr cDropdownDivider />
+          </ng-container>
+        </ng-container>
+      </li>
+    </ul>
+  </c-dropdown>
+</ng-template>

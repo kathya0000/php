@@ -1,0 +1,60 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "rootDir": ".",
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "target": "es2015",
+    "module": "esnext",
+    "lib": [
+      "es2022",
+      "dom"
+    ],
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "@apps/app-base-api": [
+        "libs/app/base/api/src/index.ts"
+      ],
+      "@apps/app-base-domain": [
+        "libs/app/base/domain/src/index.ts"
+      ],
+      "@apps/app-base-feature": [
+        "libs/app/base/feature/src/index.ts"
+      ],
+      "@apps/app-base-layout": [
+        "libs/app/base/layout/src/index.ts"
+      ],
+      "@apps/app-base-store": [
+        "libs/app/base/store/src/index.ts"
+      ],
+      "@apps/app-base-ui": [
+        "libs/app/base/ui/src/index.ts"
+      ],
+      "@apps/app-projects-api": [
+        "libs/app/projects/api/src/index.ts"
+      ],
+      "@apps/app-projects-domain": [
+        "libs/app/projects/domain/src/index.ts"
+      ],
+      "@apps/app-projects-feature": [
+        "libs/app/projects/feature/src/index.ts"
+      ],
+      "@apps/app-projects-store": [
+        "libs/app/projects/store/src/index.ts"
+      ],
+      "@apps/app-projects-ui": [
+        "libs/app/projects/ui/src/index.ts"
+      ]
+    }
+  },
+  "exclude": [
+    "node_modules",
+    "tmp"
+  ]
+}

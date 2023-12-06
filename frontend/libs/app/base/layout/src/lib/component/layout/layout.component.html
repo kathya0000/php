@@ -1,0 +1,19 @@
+<techpromux-layout-default
+  [mainNavItems]="$any(mainNavItems$ | async)"
+  [footerNavItems]="$any(footerNavItems$ | async)"
+  [theme]="theme"
+  [showSidebarInitialFolded]="true"
+  [showSidebarToggler]="false"
+  [restoreSidebarFoldedStatusOnLoad]="false"
+>
+  <app-header
+    header
+    class="mb-2 d-print-none header header-sticky"
+    position="sticky"
+    sidebarId="sidebar"
+  ></app-header>
+  <app-footer
+    footer
+    class="ps-0 pe-0 pt-0 pb-0 w-100"
+  ></app-footer>
+</techpromux-layout-default>

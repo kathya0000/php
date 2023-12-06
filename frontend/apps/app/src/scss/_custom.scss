@@ -1,0 +1,901 @@
+// Here you can add other styles
+
+/* ---------------------------------------------------------- */
+
+@import 'node_modules/@swimlane/ngx-datatable/index';
+
+@import 'node_modules/@swimlane/ngx-datatable/themes/bootstrap';
+
+@import 'node_modules/@swimlane/ngx-datatable/themes/dark';
+
+@import 'node_modules/@swimlane/ngx-datatable/assets/icons';
+
+/* ---------------------------------------------------------- */
+
+@import 'node_modules/@ng-select/ng-select/scss/default.theme';
+
+/* ---------------------------------------------------------- */
+
+@import 'node_modules/ngx-bootstrap/datepicker/bs-datepicker';
+
+/* ---------------------------------------------------------- */
+
+@import 'node_modules/angular-notifier/styles/core';
+
+@import 'node_modules/angular-notifier/styles/themes/theme-material';
+
+@import 'node_modules/angular-notifier/styles/types/type-default';
+
+@import 'node_modules/angular-notifier/styles/types/type-error';
+
+@import 'node_modules/angular-notifier/styles/types/type-info';
+
+@import 'node_modules/angular-notifier/styles/types/type-success';
+
+@import 'node_modules/angular-notifier/styles/types/type-warning';
+
+/* ---------------------------------------------------------- */
+
+@import 'node_modules/highlight.js/scss/github';
+
+/* ---------------------------------------------------------- */
+
+/* ---------------------------------------------------------- */
+/* bootstrap icons */
+/* ---------------------------------------------------------- */
+
+.bi-rotate-90::before {
+  transform: rotate(90deg);
+}
+
+.bi-rotate-180::before {
+  transform: rotate(180deg);
+}
+
+.bi-rotate-270::before {
+  transform: rotate(270deg);
+}
+
+/* ---------------------------------------------------------- */
+/* sidebar */
+/* ---------------------------------------------------------- */
+
+#sidebar.sidebar.sidebar-fixed.sidebar-narrow-unfoldable {
+  z-index: 1032;
+}
+
+/* ---------------------------------------------------------- */
+/* spinner loader in home page */
+/* ---------------------------------------------------------- */
+
+#loader-container {
+  width: 100%;
+  height: 100vh;
+  cursor: progress;
+  overflow: hidden;
+  padding: 0px;
+  background-color: rgba(0, 0, 0, 0.3);
+  position: fixed;
+  top: 0px;
+  z-index: 1050;
+}
+
+#loader-container.dark {
+  background: #43474ac1;
+}
+
+#loader {
+  z-index: 1032;
+  bottom: 0;
+  height: 175px;
+  left: 0;
+  margin: auto;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 175px;
+}
+
+#loader {
+  bottom: 0;
+  height: 175px;
+  left: 0;
+  margin: auto;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 175px;
+}
+
+#loader .dot {
+  bottom: 0;
+  height: 100%;
+  left: 0;
+  margin: auto;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 87.5px;
+}
+
+#loader .dot::before {
+  border-radius: 100%;
+  content: '';
+  height: 87.5px;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  transform: scale(0);
+  width: 87.5px;
+}
+
+#loader .dot:nth-child(7n + 1) {
+  transform: rotate(45deg);
+}
+
+#loader .dot:nth-child(7n + 1)::before {
+  animation: 0.8s linear 0.1s normal none infinite running load;
+  background: #00ff80 none repeat scroll 0 0;
+}
+
+#loader .dot:nth-child(7n + 2) {
+  transform: rotate(90deg);
+}
+
+#loader .dot:nth-child(7n + 2)::before {
+  animation: 0.8s linear 0.2s normal none infinite running load;
+  background: #00ffea none repeat scroll 0 0;
+}
+
+#loader .dot:nth-child(7n + 3) {
+  transform: rotate(135deg);
+}
+
+#loader .dot:nth-child(7n + 3)::before {
+  animation: 0.8s linear 0.3s normal none infinite running load;
+  background: #00aaff none repeat scroll 0 0;
+}
+
+#loader .dot:nth-child(7n + 4) {
+  transform: rotate(180deg);
+}
+
+#loader .dot:nth-child(7n + 4)::before {
+  animation: 0.8s linear 0.4s normal none infinite running load;
+  background: #0040ff none repeat scroll 0 0;
+}
+
+#loader .dot:nth-child(7n + 5) {
+  transform: rotate(225deg);
+}
+
+#loader .dot:nth-child(7n + 5)::before {
+  animation: 0.8s linear 0.5s normal none infinite running load;
+  background: #2a00ff none repeat scroll 0 0;
+}
+
+#loader .dot:nth-child(7n + 6) {
+  transform: rotate(270deg);
+}
+
+#loader .dot:nth-child(7n + 6)::before {
+  animation: 0.8s linear 0.6s normal none infinite running load;
+  background: #9500ff none repeat scroll 0 0;
+}
+
+#loader .dot:nth-child(7n + 7) {
+  transform: rotate(315deg);
+}
+
+#loader .dot:nth-child(7n + 7)::before {
+  animation: 0.8s linear 0.7s normal none infinite running load;
+  background: magenta none repeat scroll 0 0;
+}
+
+#loader .dot:nth-child(7n + 8) {
+  transform: rotate(360deg);
+}
+
+#loader .dot:nth-child(7n + 8)::before {
+  animation: 0.8s linear 0.8s normal none infinite running load;
+  background: #ff0095 none repeat scroll 0 0;
+}
+
+#loader .loading {
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  bottom: -40px;
+  height: 20px;
+  left: 0;
+  position: absolute;
+  right: 0;
+  width: 180px;
+}
+
+@keyframes load {
+  100% {
+    opacity: 0;
+    transform: scale(1);
+  }
+}
+
+@keyframes load {
+  100% {
+    opacity: 0;
+    transform: scale(1);
+  }
+}
+
+/* ---------------------------------------------------------- */
+/* datatable */
+/* ---------------------------------------------------------- */
+
+.datatable-footer-pager-select {
+  position: relative;
+  margin-top: 3px;
+}
+
+.ngx-datatable {
+  margin-bottom: 0px;
+}
+
+.ngx-datatable .datatable-footer .datatable-footer-pager-select > i {
+  position: absolute;
+  z-index: 1;
+  margin-top: -24px;
+  right: 5px;
+  cursor: pointer;
+}
+
+.ngx-datatable .datatable-footer .datatable-footer-pager-select > select {
+  position: relative;
+  z-index: 2;
+  color: #ededed;
+  background: none;
+  appearance: none;
+  cursor: pointer;
+}
+
+[dir='rtl']
+  .ngx-datatable
+  .datatable-footer
+  .datatable-footer-pager-select
+  > i {
+  position: absolute;
+  z-index: 1;
+  margin-top: -24px;
+  right: calc(100% - 18px);
+  cursor: pointer;
+}
+
+[dir='rtl']
+  .ngx-datatable
+  .datatable-footer
+  .datatable-footer-pager-select
+  > select {
+  position: relative;
+  z-index: 2;
+  color: #ededed;
+  background: none;
+  appearance: none;
+  cursor: pointer;
+}
+
+/* ---------------------------------------------------------- */
+
+[dir='rtl'] .ngx-datatable .datatable-footer .datatable-pager {
+  text-align: left;
+}
+
+/* ---------------------------------------------------------- */
+
+.datatable-row-detail {
+  height: inherit !important;
+  padding-bottom: 5px;
+}
+
+/* ---------------------------------------------------------- */
+
+.ngx-datatable.show-row-center-on-mobile-window-width
+  .datatable-body
+  .datatable-body-row
+  .datatable-row-center
+  .datatable-body-cell {
+  display: inherit;
+}
+
+.ngx-datatable.hide-row-center-on-mobile-window-width
+  .datatable-body
+  .datatable-body-row
+  .datatable-row-center
+  .datatable-body-cell {
+  display: none;
+}
+
+.ngx-datatable.hide-row-center-on-mobile-window-width
+  .datatable-header
+  .datatable-header-inner
+  .datatable-header-cell {
+  display: none;
+}
+
+.ngx-datatable.hide-row-center-on-mobile-window-width
+  .datatable-body
+  .datatable-body-row
+  .datatable-row-center
+  .datatable-body-cell:nth-child(1) {
+  display: inline-block;
+  position: absolute;
+}
+
+.ngx-datatable.hide-row-center-on-mobile-window-width
+  .datatable-body
+  .datatable-row-detail {
+  display: inline-block;
+  margin: 0px 25px 0px 10px;
+}
+
+.ngx-datatable.hide-row-center-on-mobile-window-width
+  .datatable-header
+  .datatable-header-inner
+  .datatable-header-cell:nth-child(1) {
+  display: inline-block;
+}
+
+.ngx-datatable.bootstrap > :not(caption) > * > * {
+  padding: 0 0 0 0;
+}
+
+.ngx-datatable.bootstrap
+  .datatable-footer
+  .datatable-footer-inner
+  > :not(caption)
+  > *
+  > * {
+  color: #ededed;
+}
+
+.ngx-datatable.bootstrap .datatable-footer {
+  background: #3c4b64;
+}
+
+.datatable-footer-pager-select .form-control.ng-valid {
+  border-color: #fff;
+}
+
+.ngx-datatable.bootstrap .datatable-scroll {
+  width: 100% !important;
+}
+
+.ngx-datatable.bootstrap .datatable-footer .datatable-footer-inner {
+  background-color: transparent !important;
+}
+
+/* ---------------------------------------------------------- */
+/* notifier */
+/* ---------------------------------------------------------- */
+
+[dir='rtl'] .notifier__notification {
+  left: 12px !important;
+  margin-right: auto !important;
+  right: inherit !important;
+}
+
+.notifier__notification-button {
+  margin-right: -25px !important;
+  margin-left: 25px !important;
+  padding-top: 3px !important;
+}
+
+[dir='rtl'] .notifier__notification-button {
+  margin-right: 25px !important;
+  margin-left: -25px !important;
+  padding-top: 3px !important;
+}
+
+/* ---------------------------------------------------------- */
+/* animations */
+/* ---------------------------------------------------------- */
+
+body {
+  width: 100vw;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+body::-webkit-scrollbar {
+  width: 0.2em;
+}
+
+/* ---------------------------------------------------------- */
+/* dynamic-forms */
+/* ---------------------------------------------------------- */
+/*
+* CUSTOMS
+*/
+
+.ng-dynamic-forms-select select.form-control.ng-untouched {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23343a40' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  background-size: 16px 12px;
+  appearance: none;
+}
+
+[dir='rtl'] .ng-dynamic-forms-select select.form-control.ng-untouched {
+  background-position: left 0.75rem center;
+}
+
+/*
+* INVALID MARKS
+*/
+
+/*
+.form-control-show-invalid-mark .ng-touched .form-control.ng-invalid.ng-touched {
+  background-position: right calc(0.375em + 0.1875rem) center;
+}
+*/
+
+.form-control-show-invalid-mark
+  .ng-dynamic-forms-select
+  .form-control.ng-invalid.ng-touched {
+  border-color: #f86c6b;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='%23f86c6b' viewBox='-2 -2 7 7'%3e%3cpath stroke='%23f86c6b' d='M0 0l3 3m0-3L0 3'/%3e%3ccircle r='.5'/%3e%3ccircle cx='3' r='.5'/%3e%3ccircle cy='3' r='.5'/%3e%3ccircle cx='3' cy='3' r='.5'/%3e%3c/svg%3E");
+  padding-right: calc(1.5em + 0.75rem);
+  background-repeat: no-repeat;
+  background-position: center right calc(0.375em + 0.1875rem);
+  // background-size: calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
+  background-size: 16px 12px !important;
+}
+
+/*
+[dir="rtl"] .form-control-show-invalid-mark .ng-touched .form-control.ng-invalid.ng-touched {
+  background-position: left calc(0.375em + 0.1875rem) center;
+}
+*/
+
+[dir='rtl']
+  .form-control-show-invalid-mark
+  .ng-touched
+  .form-control.ng-invalid.ng-touched {
+  background-position: center left calc(0.375em + 0.1875rem);
+}
+
+/*
+* VALID MARKS
+*/
+
+/*
+.form-control-show-valid-mark .ng-touched .form-control.ng-valid.ng-touched {
+  background-position: right calc(0.375em + 0.1875rem) center;
+}
+*/
+
+.form-control-show-valid-mark .ng-touched .form-control.ng-valid.ng-touched {
+  border-color: #4dbd74;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3e%3cpath fill='%234dbd74' d='M2.3 6.73L.6 4.53c-.4-1.04.46-1.4 1.1-.8l1.1 1.4 3.4-3.8c.6-.63 1.6-.27 1.2.7l-4 4.6c-.43.5-.8.4-1.1.1z'/%3e%3c/svg%3e");
+  padding-right: calc(1.5em + 0.75rem);
+  background-repeat: no-repeat;
+  background-position: center right calc(0.375em + 0.1875rem);
+  // background-size: calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
+  background-size: 16px 12px !important;
+}
+
+/*
+[dir="rtl"] .form-control-show-valid-mark .ng-touched .form-control.ng-valid.ng-touched {
+  background-position: right calc(0.375em + 0.1875rem) center;
+}
+*/
+
+[dir='rtl']
+  .form-control-show-valid-mark
+  .ng-touched
+  .form-control.ng-valid.ng-touched {
+  background-position: center left calc(0.375em + 0.1875rem);
+}
+
+/*
+* custom
+*/
+
+/*
+dynamic-ngx-bootstrap-form-control
+  > .form-group.ng-dynamic-forms-input
+  > label {
+    display: inline-block;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}*/
+
+dynamic-ngx-bootstrap-form-control
+  > .form-group.ng-dynamic-forms-input
+  > label {
+  white-space: nowrap;
+}
+
+dynamic-ngx-bootstrap-form-control
+  > .form-group.ng-dynamic-forms-select
+  > label {
+  white-space: nowrap;
+}
+
+dynamic-ngx-bootstrap-form-control
+  > .form-group.ng-dynamic-forms-input
+  > label.input-required::after {
+  content: '*';
+  margin-left: 1px;
+  margin-right: 1px;
+  color: red;
+}
+
+dynamic-ngx-bootstrap-form-control
+  > .form-group.ng-dynamic-forms-select
+  > label.input-required::after {
+  content: '*';
+  margin-left: 1px;
+  margin-right: 1px;
+  color: red;
+}
+
+/*
+.df-control-type-input-text > div.form-group > div.form-control {
+  border: 0px;
+  padding: 0px;
+}
+
+.df-control-type-select > div.form-group > div.form-control {
+  border: 0px;
+  padding: 0px;
+}
+
+.df-control-type-input-date > div.form-group > div.form-control {
+  border: 0px;
+  padding: 0px;
+}
+
+.df-control-type-datepicker > div.form-group > div.form-control {
+  border: 0px;
+  padding: 0px;
+}
+
+.df-control-type-input-range .df-control-control2.form-control {
+  padding-top: 0px;
+}
+
+.df-control-type-radio_group .df-control-control2.form-control {
+  padding: 0px;
+}
+
+.df-control-type-select > div.form-group select.form-control {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23343a40' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  background-size: 16px 12px;
+  appearance: none;
+}
+
+[dir="rtl"] .df-control-type-select > div.form-group > div.form-control select.form-control {
+  background-position: left 0.75rem center;
+}
+
+.df-control-type-input-file > div.form-group > div.form-control {
+  border: 0px;
+  padding: 0px;
+}
+
+.df-control-type-input-file
+  > div.form-group
+  > div.form-control
+  .form-control-file[type="file"]:not(:disabled):not([readonly]) {
+  cursor: pointer;
+}
+
+.df-control-type-input-file > div.form-group > div.form-control .form-control-file[type="file"] {
+  overflow: hidden;
+  padding: 0.3rem 0.375rem 0.3rem 0.375rem;
+  border: 1px solid #ced4da;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border-radius: 0.25rem;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.dynamic-form-custom-container.df-errors-default-display-block
+  dynamic-ngx-bootstrap-form-control
+  > div.form-group
+  > div
+  > div {
+  display: none;
+}
+
+.dynamic-form-custom-container.df-errors-default-display-block div.dynamic-form-custom-default-errors-tpl {
+  display: block;
+}
+
+.df-control-host-new-line {
+  border: 1px solid #00aaff;
+}
+
+.df-control-host-new-line::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+*/
+
+/* ---------------------------------------------------------- */
+
+/* ---------------------------------------------------------- */
+/* tabs */
+/* ---------------------------------------------------------- */
+
+.nav-tabs .nav-link {
+  color: var(--cui-nav-tabs-link-active-color);
+}
+
+.nav-tabs .nav-link.active,
+.nav-tabs .nav-item.show .nav-link {
+  color: var(--cui-nav-link-color);
+  font-weight: bolder;
+}
+
+/* ---------------------------------------------------------- */
+/* ng-select */
+/* ---------------------------------------------------------- */
+
+/*
+.ng-select .ng-select-container {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23343a40' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  background-size: 16px 12px;
+  appearance: none;
+  display: block;
+  width: 100%;
+  padding: 0.375rem 0.75rem 0.375rem 0.175rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--cui-input-color, rgba(44, 56, 74, 0.95));
+  background-color: var(--cui-input-bg, #fff);
+  background-clip: padding-box;
+  border: 1px solid var(--cui-input-border-color, #b1b7c1);
+  -webkit-appearance: none;
+  appearance: none;
+  border-radius: 0.375rem;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  height: 38px !important;
+}
+
+.form-group.ng-dynamic-forms-select.ng-invalid.ng-touched
+  .ng-select
+  .ng-select-container {
+  border-color: #f86c6b;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='%23f86c6b' viewBox='-2 -2 7 7'%3e%3cpath stroke='%23f86c6b' d='M0 0l3 3m0-3L0 3'/%3e%3ccircle r='.5'/%3e%3ccircle cx='3' r='.5'/%3e%3ccircle cy='3' r='.5'/%3e%3ccircle cx='3' cy='3' r='.5'/%3e%3c/svg%3E");
+  padding-right: calc(1.5em + 0.75rem) !important;
+  background-repeat: no-repeat !important;
+  background-position: center right calc(0.375em + 0.1875rem) !important;
+  background-size: calc(0.75em + 0.375rem) calc(0.75em + 0.375rem) !important;
+}
+
+.form-group.ng-dynamic-forms-select.ng-valid.ng-touched
+  .ng-select
+  .ng-select-container {
+  border-color: #4dbd74;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3e%3cpath fill='%234dbd74' d='M2.3 6.73L.6 4.53c-.4-1.04.46-1.4 1.1-.8l1.1 1.4 3.4-3.8c.6-.63 1.6-.27 1.2.7l-4 4.6c-.43.5-.8.4-1.1.1z'/%3e%3c/svg%3e");
+  padding-right: calc(1.5em + 0.75rem) !important;
+  background-repeat: no-repeat !important;
+  background-position: center right calc(0.375em + 0.1875rem) !important;
+  background-size: calc(0.75em + 0.375rem) calc(0.75em + 0.375rem) !important;
+}
+
+*/
+
+.form-group.ng-dynamic-forms-select {
+  .ng-select.ng-dynamic-forms-ngx-bootstrap-select-ng-select {
+    padding-top: 0px !important;
+    padding-right: 0px !important;
+    padding-bottom: 0px !important;
+
+    .ng-select-container {
+      padding: 0.375rem 0.375rem !important;
+      margin-left: -0.75rem;
+      width: calc(100% + 0.75rem);
+      border: 0px !important;
+      border-radius: 0.375rem !important;
+    }
+
+    .ng-value-container {
+      padding: 0px !important;
+      padding-left: 6px !important;
+    }
+
+    .ng-dropdown-panel .ng-dropdown-panel-items .ng-option {
+      font-weight: normal;
+      display: block;
+      white-space-collapse: collapse;
+      text-wrap: nowrap;
+      min-height: 1.2em;
+      padding: 1px 15px 2px;
+      font-size: 1rem;
+      color: var(--cui-input-color, rgba(44, 56, 74, 0.95));
+      cursor: auto !important;
+    }
+
+    .ng-dropdown-panel .ng-dropdown-panel-items .ng-option.ng-option-marked {
+      background-color: rgb(25 103 210) !important;
+      color: #ffffff !important;
+    }
+
+    .ng-dropdown-panel {
+      border-radius: 0.475rem !important;
+    }
+
+    .ng-dropdown-panel.ng-select-bottom {
+      margin-top: 1px !important;
+    }
+
+    .ng-dropdown-panel .ng-dropdown-panel-items {
+      border-radius: 0.375rem !important;
+    }
+
+    .ng-dropdown-panel .ng-dropdown-panel-items .ng-option:first-child {
+      border-top-left-radius: 0.375rem !important;
+      border-top-right-radius: 0.375rem !important;
+    }
+
+    .ng-dropdown-panel .ng-dropdown-panel-items .ng-option:last-child {
+      border-bottom-left-radius: 0.375rem !important;
+      border-bottom-right-radius: 0.375rem !important;
+    }
+
+    .ng-select.ng-select-opened.ng-select-bottom > .ng-select-container {
+      border-bottom-right-radius: 0.375rem !important;
+      border-bottom-left-radius: 0.375rem !important;
+    }
+
+    .ng-arrow-wrapper {
+      margin-right: 0px;
+      padding-right: 0px;
+      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23343a40' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e");
+      background-repeat: no-repeat;
+      background-position: center right calc(0.375em + 0.1875rem) !important;
+      background-size: 16px 12px;
+      appearance: none;
+      height: 25px;
+      margin-right: -5px;
+      cursor: auto;
+    }
+
+    .ng-arrow {
+      display: none;
+    }
+  }
+
+  ng-select.ng-dynamic-forms-ngx-bootstrap-select-ng-select.ng-select-multiple {
+    .ng-select-container {
+      padding-bottom: 2px !important;
+      padding-top: 2px !important;
+
+      .ng-value {
+        margin-bottom: 1px !important;
+      }
+    }
+  }
+
+  .ng-select.ng-invalid.ng-touched {
+    .ng-arrow-wrapper {
+      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='%23f86c6b' viewBox='-2 -2 7 7'%3e%3cpath stroke='%23f86c6b' d='M0 0l3 3m0-3L0 3'/%3e%3ccircle r='.5'/%3e%3ccircle cx='3' r='.5'/%3e%3ccircle cy='3' r='.5'/%3e%3ccircle cx='3' cy='3' r='.5'/%3e%3c/svg%3E");
+      padding-right: calc(1.5em + 0.75rem) !important;
+      background-repeat: no-repeat !important;
+      background-position: center right calc(0.375em + 0.75rem) !important;
+      background-size: 16px 12px !important;
+      margin-right: -15px;
+    }
+  }
+
+  .ng-select.ng-valid.ng-touched {
+    .ng-arrow-wrapper {
+      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3e%3cpath fill='%234dbd74' d='M2.3 6.73L.6 4.53c-.4-1.04.46-1.4 1.1-.8l1.1 1.4 3.4-3.8c.6-.63 1.6-.27 1.2.7l-4 4.6c-.43.5-.8.4-1.1.1z'/%3e%3c/svg%3e");
+      padding-right: calc(1.5em + 0.75rem) !important;
+      background-repeat: no-repeat !important;
+      background-position: center right calc(0.375em + 0.75rem) !important; // center right 0.1875rem !important;
+      background-size: 16px 12px !important;
+      margin-right: -15px;
+    }
+  }
+
+  .ng-select.ng-select-disabled > .ng-select-container {
+    background-color: var(--cui-secondary-bg);
+  }
+}
+
+dynamic-ngx-bootstrap-form-control
+  > .ng-dynamic-forms-radio_group
+  dynamic-ngx-bootstrap-radio-group
+  .btn-group
+  .btn {
+  border-color: var(--cui-btn-disabled-border-color);
+  opacity: var(--cui-btn-disabled-opacity);
+}
+
+dynamic-ngx-bootstrap-form-control
+  > .ng-dynamic-forms-radio_group
+  dynamic-ngx-bootstrap-radio-group
+  .btn-group
+  .btn.active {
+  background-color: var(--cui-secondary-bg);
+  opacity: 1;
+}
+
+/* ---------------------------------------------------------- */
+/* camera plugin */
+/* ---------------------------------------------------------- */
+
+pwa-camera-modal {
+  z-index: 1031;
+}
+
+pwa-camera-modal-instance {
+  z-index: 1031;
+}
+
+/* ---------------------------------------------------------- */
+/* ngx-gallery */
+/* ---------------------------------------------------------- */
+
+.ngx-gallery {
+  display: inline-block;
+  margin-bottom: 20px;
+}
+
+/* ---------------------------------------------------------- */
+/* security */
+/* ---------------------------------------------------------- */
+
+body.session-unchecked app-dashboard {
+  display: none !important;
+}
+
+body.session-unchecked ng-component {
+  display: none !important;
+}
+
+/* ---------------------------------------------------------- */
+/* printable */
+/* ---------------------------------------------------------- */
+
+@media print {
+  .content-no-printable,
+  .content-no-printable * {
+    visibility: hidden;
+    display: none;
+  }
+
+  .content-printable {
+    visibility: visible;
+    margin-top: 0px !important;
+    padding-top: 0px !important;
+  }
+}
+
+/* ---------------------------------------------------------- */
+/* other */
+/* ---------------------------------------------------------- */
+
+.sidebar-brand .sidebar-brand-narrow {
+  content: url('../assets/img/brand/logo.png');
+  width: 40px;
+  height: 40px;
+}
+
+.sidebar-brand .sidebar-brand-full {
+  content: url('../assets/img/brand/logo-and-name.png');
+  width: 200px;
+  height: 40px;
+}
